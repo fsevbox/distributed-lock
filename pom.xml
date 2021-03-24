@@ -17,6 +17,8 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<cassandra.driver.oss.version>4.6.0</cassandra.driver.oss.version>
+		<hazelcast.version>4.1.1</hazelcast.version>
 	</properties>
 
 	<dependencies>
@@ -34,7 +36,18 @@
 		<dependency>
 			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast-all</artifactId>
-			<version>4.1.1</version>
+			<version>${hazelcast.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.datastax.oss</groupId>
+			<artifactId>java-driver-core</artifactId>
+			<version>${cassandra.driver.oss.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.datastax.oss</groupId>
+			<artifactId>java-driver-query-builder</artifactId>
+			<version>${cassandra.driver.oss.version}</version>
 		</dependency>
 
 		<dependency>

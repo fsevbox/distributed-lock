@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.techfrog.distributedlock.HazelcastRunner;
 import org.techfrog.distributedlock.api.DistributedLockProvider;
 import org.techfrog.distributedlock.api.Runner;
 

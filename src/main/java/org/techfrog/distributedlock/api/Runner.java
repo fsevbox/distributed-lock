@@ -11,8 +11,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class Runner {
 
     public static final int LOCK_TRY_TIMEOUT = 1000;
-    public static final int RUN_FOR_MILLIES = 990;
-    public static final String LOCKER_NAME = "aaa-lock";
+    public static final int RUN_FOR_MILLIES = 900;
 
     protected DistributedLockProvider distributedLockProvider;
 
@@ -22,12 +21,12 @@ public abstract class Runner {
 
     public abstract void execute() throws InterruptedException;
 
-    protected void lockAndRun() throws InterruptedException {
-        DistributedLock lock = distributedLockProvider.getLock(LOCKER_NAME);
+    protected void lockAndRun(String lockName) throws InterruptedException {
+        DistributedLock lock = distributedLockProvider.getLock(lockName);
         if (lock.tryLock(LOCK_TRY_TIMEOUT, TimeUnit.MILLISECONDS)) {
             try {
                 Thread.sleep(RUN_FOR_MILLIES);
-                log.info(getIdentifier() + " locked on " +
+                log.info(getIdentifier() + " locked on second " +
                         LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).getSecond());
             } finally {
                 lock.unlock();

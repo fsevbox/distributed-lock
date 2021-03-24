@@ -1,4 +1,4 @@
-package org.techfrog.distributedlock;
+package org.techfrog.distributedlock.hazelcast;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.techfrog.distributedlock.api.DistributedLockProvider;
@@ -6,6 +6,7 @@ import org.techfrog.distributedlock.api.Runner;
 
 public class HazelcastRunner extends Runner {
 
+    public static final String LOCK_NAME = "aaa-lock";
     private String port;
 
     public HazelcastRunner(DistributedLockProvider distributedLockProvider, String port) {
@@ -16,7 +17,7 @@ public class HazelcastRunner extends Runner {
     // run every second
     @Scheduled(cron = "* * * * * *")
     public void execute() throws InterruptedException {
-        lockAndRun();
+        lockAndRun(LOCK_NAME);
     }
 
     @Override
